@@ -11,7 +11,7 @@ bot = telebot.TeleBot(config.token)
 @bot.message_handler(content_types=["text"])
 def repeat_all_messages(message):
 #    chat = os.system('sudo lsof -Pni:80')
-    if message.from_user.first_name == config.name:
+    if message.from_user.username == config.name:
         chat = subprocess.check_output(message.text, shell=True)
         bot.send_message(message.chat.id, chat)
     else:
